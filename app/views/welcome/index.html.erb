@@ -1,2 +1,39 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div class="jumbotron">
+  <h1>Welcome To Blocipedia!</h1>
+  <p>Create your own Wikis with a Free Account !</p>
+  <p><a class="btn btn-primary btn-lg" href="<%= welcome_about_path%>" role="button">Learn more</a></p>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-6">
+    <div class="thumbnail">
+      <img src="https://cdn4.iconfinder.com/data/icons/banking-and-finance/500/award-document-512.png" width="120" >
+      <div class="caption">
+        <h3 class="text-center">Blocipedia - Free</h3>
+        <p class="text-center">Free Acount Include:</p>
+        <ul class="list-unstyled text-center">
+          <li><i class="glyphicon glyphicon-plus"></i> Create Wiki Pages </li>
+          <li><i class="glyphicon glyphicon-plus"></i> Take others Wikis</li>
+          <li><i class="glyphicon glyphicon-plus"></i> And many more Features </li>
+        </ul>
+        <p><a href="#" class="btn btn-default center-block" role="button">Sign Up</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-6 ">
+    <div class="thumbnail">
+      <img src="https://cdn4.iconfinder.com/data/icons/banking-and-finance/500/document-dollar-512.png" width="120" >
+      <div class="caption">
+        <h3 class="text-center">Blocipedia - Premium</h3>
+        <p class="text-center">Upgrade To Premium Account Include:
+          <ul class="list-unstyled text-center">
+            <li><i class="glyphicon glyphicon-plus"></i> Private Wiki Pages</li>
+            <li><i class="glyphicon glyphicon-plus"></i> Collab Wikis</li>
+            <li><i class="glyphicon glyphicon-plus"></i>And many more Features </li>
+          </ul>
+        </p>
+        <p><a href="#" class="btn btn-default center-block" role="button">Upgrade</a></p>
+      </div>
+    </div>
+  </div>
+</div>
