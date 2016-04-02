@@ -17,9 +17,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'bootstrap'
+gem 'bootstrap-sass'
 gem 'figaro'
 gem 'pry'
+gem 'devise'
+gem 'twitter-bootstrap-rails'
+gem 'devise-bootstrap-views'
 
 group :development, :test do
   gem 'byebug'
