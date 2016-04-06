@@ -1,0 +1,28 @@
+<div  class="panel panel-default" style="width: 70%; margin:0 auto;">
+  <div class="panel-heading "> <center><a id="top">Wiki List</a></center> </div>
+    <div class="panel-body">
+      <table class="table table-striped" >
+        <thead class="thead">
+          <tr>
+            <th class="col-md-6"> Title </th>
+            <th class="col-md-2"> Published By
+            <th class="col-md-2"> Date Published </th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @wikis.each do |wiki| %>
+          <tr>
+            <td><%= link_to wiki.title.truncate(60), wiki %></br>
+              <small> <%= wiki.body.titleize.truncate(25) %></small>
+            </td>
+            <td class="col-md-2"><%= wiki.user.username %></td>
+            <td class="col-md-2"><%= wiki.created_at.strftime("%b-%d-%Y") %></td>
+          </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-primary'%>
+        <a href="#top", class="btn btn-info">Go to top</a>
+
+      </div>
+    </div>
