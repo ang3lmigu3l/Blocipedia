@@ -15,7 +15,11 @@
             <td><%= link_to wiki.title.truncate(60), wiki %></br>
               <small> <%= wiki.body.titleize.truncate(25) %></small>
             </td>
-            <td class="col-md-2"><%= wiki.user.username %></td>
+            <td class="col-md-2">
+              <% if current_user.present? && current_user.id == wiki.user_id %> Me 
+              <% else %>
+              <%= wiki.user.username %>
+              <% end %></td>
             <td class="col-md-2"><%= wiki.created_at.strftime("%b-%d-%Y") %></td>
           </tr>
             <% end %>
