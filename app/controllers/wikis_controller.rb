@@ -2,7 +2,7 @@ class WikisController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
   def index
-    @wikis = Wiki.all.sort_by_newest
+    @wikis = Wiki.sort_by_newest.page(params[:page]).per(15)
   end
 
   def show
