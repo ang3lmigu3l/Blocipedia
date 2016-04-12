@@ -1,18 +1,20 @@
 class WikisController < ApplicationController
+
+  before_action :authenticate_user!, :except => [:index, :show]
   def index
     @wikis = Wiki.all.sort_by_newest
-
   end
-   def show
+
+  def show
      @wiki = wiki_params
-   end
+  end
+
   def new
     @wiki = current_user.wikis.new
   end
 
   def create
     @wiki = current_user.wikis.new(wiki_permits)
-
 
     if @wiki.save
       flash[:notice] = 'Wiki saved successfully.'

@@ -23,6 +23,7 @@ gem 'pry'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
+gem 'pundit'
 
 group :development, :test do
   gem 'byebug'
