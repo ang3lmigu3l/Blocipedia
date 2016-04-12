@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'users/show'
+
   resources :wikis
-  resources :charges, only: [:new, :create]
+  resources :charges
+  delete 'subscriptions/', to: 'charges#destroy', as: :subscription
   devise_for :users
 
   get '/about' => 'welcome#about'
