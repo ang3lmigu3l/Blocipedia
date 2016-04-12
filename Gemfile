@@ -24,6 +24,7 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
 gem 'pundit'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'
