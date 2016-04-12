@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h1>Welcome To Blocipedia!</h1>
   <p>Create your own Wikis with a Free Account !</p>
-  <p><a class="btn btn-primary btn-lg" href="<%= welcome_about_path%>" role="button">Learn more</a></p>
+  <p><a class="btn btn-primary btn-lg" href="<%= about_path%>" role="button">Learn more</a></p>
 </div>
 
 <div class="row">
@@ -16,7 +16,7 @@
           <li><i class="glyphicon glyphicon-plus"></i> Take others Wikis</li>
           <li><i class="glyphicon glyphicon-plus"></i> And many more Features </li>
         </ul>
-        <p><a href="#" class="btn btn-default center-block" role="button">Sign Up</a></p>
+        <p><%= link_to "Sign Up", new_user_registration_path, :class => 'btn btn-default center-block', :role => 'button' %></p>
       </div>
     </div>
   </div>
