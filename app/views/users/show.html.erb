@@ -1,2 +1,9 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<div class="panel panel-default panel-wizard col-md-8 col-md-offset-2">
+  <h2 align="center"><%= @user.username.titleize %> - <%= @user.role.titleize %> Account</h2>
+  <h4 align="center"> (<%= @user.email %>) </h4>
+  <div class="panel-body">
+    Lists of Wikis :
+<%=render @user.wikis %>
+</div>
+</div>

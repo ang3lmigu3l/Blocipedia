@@ -1,9 +1,41 @@
+<div class="row">
 <% if current_user.standard? %>
-      <%= form_tag charges_path do %>
-       <p>$15 Premium Membership</p><script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-email="<%= @stripe_btn_data[:email] %>" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
-      <% end %>
-
+<div class="col-sm-6 col-md-6 col-md-offset-3">
+    <div class="thumbnail">
+      <img src="https://cdn4.iconfinder.com/data/icons/banking-and-finance/500/document-dollar-512.png" width="120" >
+      <div class="caption">
+        <h3 class="text-center">Blocipedia - Premium($15/m)</h3>
+        <p class="text-center">Upgrade To Premium Account Include:
+          <ul class="list-unstyled text-center">
+            <li><i class="glyphicon glyphicon-plus"></i> Private Wiki Pages</li>
+            <li><i class="glyphicon glyphicon-plus"></i> Collab Wikis</li>
+            <li><i class="glyphicon glyphicon-plus"></i>And many more Features </li>
+            <li><i class="glyphicon glyphicon-plus"></i>Free Hugs</li>
+          </ul>
+        </p>
+        <div align="center"><%= form_tag charges_path do %>
+            <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-email="<%= @stripe_btn_data[:email] %>" data-key="<%= @stripe_btn_data[:key] %>" data-amount=<%= @stripe_btn_data[:amount] %> data-description="<%= @stripe_btn_data[:description] %>" ></script>
+          </div>
+          <% end %>
+      </div>
+    </div>
+  </div>
 <% else %>
-  <h4>You are currently a Premium Member of Blocipedia!</h4>
-  <%= link_to 'Cancel Plan' , subscription_path, class: 'btn btn-default', method: 'delete' %>
+<div class="col-sm-6 col-md-6 col-md-offset-3">
+  <div class="thumbnail">
+    <img src="https://cdn4.iconfinder.com/data/icons/banking-and-finance/500/award-document-512.png" width="120" >
+    <div class="caption">
+      <h3 class="text-center">Blocipedia Downgrade To Free</h3>
+      <p class="text-center">Free Acount Include:</p>
+      <ul class="list-unstyled text-center">
+        <li><i class="glyphicon glyphicon-remove"></i> Private Wikis</li>
+        <li><i class="glyphicon glyphicon-remove"></i> Collab Wikis</li>
+        <li><i class="glyphicon glyphicon-remove"></i> No More free hugs</li>
+      </ul>
+      <p>  <%= link_to 'Cancel Plan' , subscription_path, class: 'btn btn-default center-block', method: 'delete' %>
+</p>
+    </div>
+  </div>
+</div>
+</div>
 <% end %>

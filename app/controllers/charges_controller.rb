@@ -1,5 +1,5 @@
 class ChargesController < ApplicationController
-
+before_action :authenticate_user!
   def new
     @stripe_btn_data = {
       email: current_user.email,
