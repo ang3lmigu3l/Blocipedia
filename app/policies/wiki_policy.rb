@@ -13,7 +13,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def new?
-    @user.present?
+    @user.present? 
   end
 
   def create?
