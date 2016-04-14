@@ -2,7 +2,9 @@
   <div class="media-body">
     <h2> <%= @wiki.title %></h2>
     <p> <%= @wiki.body %></p>
+  </div>
 </div>
-    </div>
 <%= link_to "Edit Wiki", edit_wiki_path, class: 'btn btn-default'%>
+<% if current_user.id == @wiki.user_id || current_user.admin? %>
 <%= link_to "Delete", wiki_path(@wiki), method: 'delete', class: 'btn btn-default' %>
+<% end %>

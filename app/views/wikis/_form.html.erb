@@ -7,9 +7,11 @@
     <%= f.label :body  %>
     <%= f.text_area :body , class: 'form-control', placeholder: "What is this Wiki About? " %>
   </div>
+  <% if current_user.admin? || current_user.premium? %>
   <div class="form-group">
     <%= f.label :private %>
     <%= f.check_box  :private%>
   </div>
+  <% end %>
   <%= f.submit "Submit Item", class: 'btn btn-primary pull-right' %>
 <% end %>
