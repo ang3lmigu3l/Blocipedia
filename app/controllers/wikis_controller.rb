@@ -2,11 +2,15 @@ class WikisController < ApplicationController
 
   before_action :authenticate_user!, :except => [:index, :show]
   def index
-    @wikis = Wiki.sort_by_newest.page(params[:page]).per(15)
+    @wikis = Wiki.visible_to(current_user).page(params[:page]).per(15)
   end
 
   def show
      @wiki = wiki_params
+  end
+
+  def private
+    @wikis = Wiki.private_wikis(current_user).page(params[:page]).per(15)
   end
 
   def new
