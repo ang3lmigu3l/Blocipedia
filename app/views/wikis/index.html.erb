@@ -4,7 +4,7 @@
       <table class="table table-striped" >
         <thead class="thead">
           <tr>
-            <th class="col-md-6"> Title </th>
+            <th class="col-md-6"> Title   <small><span class="pull-right" >Private Wikis  <span class="glyphicon glyphicon-eye-open"></small></span></th>
             <th class="col-md-2"> Published By
             <th class="col-md-2"> Date Published </th>
           </tr>
@@ -14,7 +14,7 @@
           <tr>
             <td><%= link_to wiki.title.truncate(40), wiki %>
               <% if wiki.private_wiki %>
-              <small><span class="glyphicon glyphicon-lock"></span></small>
+              <small><span class="glyphicon glyphicon-eye-open"></span></small>
               <% end %>
             </br>
               <small> <%= wiki.body.titleize.truncate(25) %></small>

@@ -32,7 +32,7 @@
         <li><i class="glyphicon glyphicon-remove"></i> Collab Wikis</li>
         <li><i class="glyphicon glyphicon-remove"></i> No More free hugs</li>
       </ul>
-      <p>  <%= link_to 'Cancel Plan' , subscription_path, class: 'btn btn-default center-block', method: 'delete' %>
+      <p>  <%= link_to 'Cancel Plan' , subscription_path, class: 'btn btn-default center-block', method: 'delete', data: {confirm: "Downgrading account to STANDARD will cause all private wikis become public. Are you sure you want to continue with cancellation ?"}%>
 </p>
     </div>
   </div>

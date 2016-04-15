@@ -7,4 +7,9 @@ module ApplicationHelper
   def user_premium_or_admin
     current_user && (current_user.premium? || current_user.admin?)
   end
+
+  def user_guest_or_standard
+    (current_user && current_user.standard?)
+  end
+
 end
