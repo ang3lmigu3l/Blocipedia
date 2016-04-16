@@ -14,7 +14,7 @@
  *= require_tree .
  *= require_self
  */
-
+ @import "normalize";
  @import "bootstrap-sprockets";
   @import "bootstrap";
 
@@ -25,3 +25,46 @@
       margin: 0 auto;
       width:30% /* value of your choice which suits your alignment */
   }
+  body {font-family: 'Raleway', sans-serif;}
+  .nav li a {font-size: 16px;color: black}
+
+  a {color:#3186ad;}
+
+  .btn-primary,
+  .btn-primary:hover,
+  .btn-primary:active,
+  .btn-primary:visited,
+  .btn-primary:focus {
+      background-color: #3498db;
+      border-color: #3498db;
+  }
+  .btn-info,
+  .btn-info:hover,
+  .btn-info:active,
+  .btn-info:visited,
+  .btn-info:focus {
+      background-color: #95a5a6;
+      border-color: #95a5a6;
+  }
+
+  .btn-warning,
+  .btn-warning:hover,
+  .btn-warning:active,
+  .btn-warning:visited,
+  .btn-warning:focus {
+      background-color: #6ed3cf;
+      border-color: #6ed3cf;
+  }
+
+  .navbar-brand {
+  font-size: 12px;
+  border:solid 2px black ;
+  padding: 0px;
+  margin: 0px;
+  content: 0px;
+
+}
+
+.center-links {
+text-align:center
+}
