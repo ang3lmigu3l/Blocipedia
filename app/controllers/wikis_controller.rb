@@ -9,10 +9,10 @@ class WikisController < ApplicationController
   def show
      @wiki = wiki_params
 
-    #  unless @wiki.private && user_premium_or_admin
-    #    flash[:alert] = "You are not allowed to view private Wikis "
-    #    redirect_to wikis_path
-    #  end
+     unless @wiki.private == false || current_user
+       flash[:alert] = "You are not allowed to view private Wikis "
+       redirect_to wikis_path
+     end
 
   end
 
@@ -32,7 +32,7 @@ class WikisController < ApplicationController
       redirect_to @wiki
     else
       flash[:alert] = 'Wiki not saved. Title is too short or missing. Please try again.'
-      redirect_to :new
+      render :new
     end
   end
 
@@ -49,7 +49,7 @@ class WikisController < ApplicationController
       redirect_to @wiki
     else
       flash[:alert] = "Wiki was unable to be updated pleace try again. "
-      redirect_to :update
+      render :edit
     end
   end
 
