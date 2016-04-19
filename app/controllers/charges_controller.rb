@@ -39,6 +39,7 @@ before_action :authenticate_user!
     customer = Stripe::Customer.retrieve(current_user.stripe_id)
     current_user.subscribed = false
     current_user.role = 'standard'
+    current_user.wikis.update_all(private: false )
     current_user.save
 
     flash[:notice] = "You are no Longer subscribed."

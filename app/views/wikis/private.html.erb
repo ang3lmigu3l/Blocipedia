@@ -1,10 +1,10 @@
 <div  class="panel panel-default" style="width: 70%; margin:0 auto;">
-  <div class="panel-heading "> <center>Wiki List</center> </div>
+  <div class="panel-heading "> <center>Private Wiki List</center> </div>
     <div class="panel-body">
       <table class="table table-striped" >
         <thead class="thead">
           <tr>
-            <th class="col-md-6"> Title   <small><span class="pull-right" >Private Wikis  <span class="glyphicon glyphicon-eye-open"></small></span></th>
+            <th class="col-md-6"> Title </th>
             <th class="col-md-2"> Published By
             <th class="col-md-2"> Date Published </th>
           </tr>
@@ -13,8 +13,8 @@
             <% @wikis.each do |wiki| %>
           <tr>
             <td><%= link_to wiki.title.truncate(40), wiki %>
-              <% if wiki.private_wiki %>
-              <small><span class="glyphicon glyphicon-eye-open"></span></small>
+               <% if wiki.private_wiki %>
+               <small><span class="glyphicon glyphicon-eye-open"></span></small>
               <% end %>
             </br>
               <small> <%= wiki.body.titleize.truncate(25) %></small>

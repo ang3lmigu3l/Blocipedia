@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :wikis
+  get '/private_wikis' => 'wikis#private'
   resources :charges
   delete 'subscriptions/', to: 'charges#destroy', as: :subscription
   devise_for :users

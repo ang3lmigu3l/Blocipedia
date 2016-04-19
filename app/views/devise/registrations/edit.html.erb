@@ -22,11 +22,13 @@
         <%= f.password_field :current_password, class: "form-control" %>
       </div>
       <%= f.submit t('.update', :default => "Update"), class: "btn btn-primary" %>
-      <%if @user.standard? %>
-      <%= link_to 'Upgrade Plan' ,  new_charge_path, class: 'btn btn-default' %>
+      <% if current_user.standard? || current_user.premium? %>
+        <%if @user.standard? %>
+          <%= link_to 'Upgrade Plan' ,  new_charge_path, class: 'btn btn-default' %>
         <% else %>
-        <%= link_to 'Cancel Plan' , subscription_path, class: 'btn btn-default', method: 'delete' , data: {confirm: "are you sure you want to cancel your Blocipedia Subscription ?"}%>
+          <%= link_to 'Cancel Plan' , subscription_path, class: 'btn btn-default', method: 'delete' , data: {confirm: "are you sure you want to cancel your Blocipedia Subscription ?"}%>
         <% end %>
+      <% end %>
     <% end %>
   </div>
 </div>
