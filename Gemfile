@@ -26,6 +26,7 @@ gem 'devise-bootstrap-views'
 gem 'pundit'
 gem 'kaminari'
 gem 'stripe'
+gem 'redcarpet'
 
 group :development, :test do
   gem 'byebug'

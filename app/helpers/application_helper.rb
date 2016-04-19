@@ -12,4 +12,10 @@ module ApplicationHelper
     (current_user && current_user.standard?)
   end
 
+  def markdown(text)
+    renderer = Redcarpet::Render::HTML.new(hard_wrap: true , filter_html: true )
+    extentions = {autolink: true , quote: true }
+    Redcarpet::Markdown.new(renderer, extentions).render(text).html_safe
+  end
+
 end

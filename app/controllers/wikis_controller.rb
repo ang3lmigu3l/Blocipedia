@@ -1,5 +1,6 @@
 class WikisController < ApplicationController
   include ApplicationHelper
+
   before_action :authenticate_user!, :except => [:index, :show]
   def index
     @wikis = Wiki.visible_to(current_user).page(params[:page]).per(15)
@@ -8,10 +9,10 @@ class WikisController < ApplicationController
   def show
      @wiki = wiki_params
 
-     unless @wiki.private && user_premium_or_admin
-       flash[:alert] = "You are not allowed to view private Wikis "
-       redirect_to wikis_path
-     end
+    #  unless @wiki.private && user_premium_or_admin
+    #    flash[:alert] = "You are not allowed to view private Wikis "
+    #    redirect_to wikis_path
+    #  end
 
   end
 
