@@ -1,12 +1,13 @@
 class WikisController < ApplicationController
   include ApplicationHelper
 
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!
   def index
-    @wikis = Wiki.visible_to(current_user).page(params[:page]).per(15)
+    @wikis = Kaminari.paginate_array(policy_scope(Wiki)).page(params[:page]).per(10)
   end
 
   def show
+    @users = User.where("role = 1 OR role = 2") #Used for Collaborators Selection
      @wiki = wiki_params
 
      unless @wiki.private == false || current_user
@@ -17,7 +18,7 @@ class WikisController < ApplicationController
   end
 
   def private
-    @wikis = Wiki.private_wikis(current_user).page(params[:page]).per(15)
+    @wikis = current_user.wikis.where(private:true).page(params[:page]).per(15)
   end
 
   def new

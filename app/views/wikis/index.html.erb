@@ -1,11 +1,12 @@
 <div  class="panel panel-default" style="width: 70%; margin:0 auto;">
   <div class="panel-heading "> <center>Wiki List</center> </div>
     <div class="panel-body">
-      <!-- <table class="table table-striped" >
+      <table class="table table-striped" >
         <thead class="thead">
           <tr>
-            <th class="col-md-6"> Title   <small><span class="pull-right" >Private Wikis  <span class="glyphicon glyphicon-eye-open"></small></span></th>
-            <th class="col-md-2"> Published By
+            <th class="col-md-6"> Title</th>
+            <th class="col-md-2"> Private </th>
+            <th class="col-md-2"> Published By </th>
             <th class="col-md-2"> Date Published </th>
           </tr>
         </thead>
@@ -13,12 +14,13 @@
             <% @wikis.each do |wiki| %>
           <tr>
             <td><%= link_to wiki.title.truncate(40), wiki %>
-              <% if wiki.private_wiki %>
-              <small><span class="glyphicon glyphicon-eye-open"></span></small>
-              <% end %>
             </br>
               <small> <%= wiki.body.titleize.truncate(25) %></small>
             </td>
+            <td class="col-md-2"> <% if wiki.private_wiki %>
+            <small>  <span class="glyphicon glyphicon-ok"></span></small>
+            <% end %>
+          </td>
             <td class="col-md-2">
               <% if current_user.present? && current_user.id == wiki.user_id %> Me
               <% else %>
@@ -28,22 +30,8 @@
           </tr>
             <% end %>
           </tbody>
-        </table> -->
+        </table>
 
-          <% @wikis.each do |wiki| %>
-          <h6 class="wiki_header">
-            <%= link_to wiki.title.titleize.truncate(40) , wiki %>
-              <% if wiki.private_wiki %>
-                <small><span class="glyphicon glyphicon-eye-open"></span></small>
-              <% end %>
-            <span class="pull-right">
-              <small>
-                By <% if current_user.present? && current_user.id == wiki.user_id %> Me |
-                <% else %>
-                  <%= wiki.user.username %> |
-                <% end %></td><%= time_ago_in_words(wiki.created_at) %> ago</small></span></h5>
-            <small> <%= wiki.body.titleize.truncate(25) %></small>
-          <% end %>
 </br>
         <center> <%= paginate @wikis %></br></center>
         <div class="center-links">

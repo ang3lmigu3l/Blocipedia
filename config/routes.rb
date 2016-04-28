@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
 
-  resources :wikis
+  resources :wikis do
+    resources :collaborators
+  end
   get '/private_wikis' => 'wikis#private'
+
   resources :charges
   delete 'subscriptions/', to: 'charges#destroy', as: :subscription
+
   devise_for :users
+
   resources :users, :only => [:show]
 
   get '/about' => 'welcome#about'

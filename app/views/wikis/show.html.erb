@@ -2,7 +2,8 @@
   <div class="media">
   <div class="media-body">
     <h2 align="center"> <%= @wiki.title %></h2>
-    <small><h6 align="center"> by: <%= @wiki.user.username %> <%= time_ago_in_words(@wiki.created_at) %> ago </h6></small>
+      <small><h6 align="center"> by: <%= @wiki.user.username %> <%= time_ago_in_words(@wiki.created_at) %> ago </h6></small>
+
     <%= markdown(@wiki.body) %>
   </div>
   <div class="center-links">
@@ -11,5 +12,19 @@
   <%= link_to "Delete", wiki_path(@wiki), method: 'delete', class: 'btn btn-warning' %>
   <% end %>
   </div>
+  <div align="center">
+  <% if @wiki.private == true %>
+  <h4 align="center">Collaborators</h4>
+  Edit Wiki collaborators
+  <%= render partial: 'collaborators/collaborator',locals: {wiki: @wiki, collaborator: Collaborator.new}%>
+  <% @wiki.collaborators.each do |collaborator| %>
+  <%= collaborator.user.username.titleize %>
+  <% if @wiki.user == current_user %> <%= link_to "[x] ", [@wiki, collaborator], method: :delete %>
+  <% end %>
+   |
+  <% end %>
+  <% end %>
+</div>
+</div>
 </div>
 </div>
