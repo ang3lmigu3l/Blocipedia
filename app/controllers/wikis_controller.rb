@@ -1,23 +1,24 @@
 class WikisController < ApplicationController
   include ApplicationHelper
 
-  before_action :authenticate_user!, :except => [:index, :show]
+  before_action :authenticate_user!
   def index
-    @wikis = Wiki.visible_to(current_user).page(params[:page]).per(15)
+    @wikis = Kaminari.paginate_array(policy_scope(Wiki)).page(params[:page]).per(10)
   end
 
   def show
+    @users = User.where("role = 1 OR role = 2") #Used for Collaborators Selection
      @wiki = wiki_params
 
-    #  unless @wiki.private && user_premium_or_admin
-    #    flash[:alert] = "You are not allowed to view private Wikis "
-    #    redirect_to wikis_path
-    #  end
+     unless @wiki.private == false || current_user
+       flash[:alert] = "You are not allowed to view private Wikis "
+       redirect_to wikis_path
+     end
 
   end
 
   def private
-    @wikis = Wiki.private_wikis(current_user).page(params[:page]).per(15)
+    @wikis = current_user.wikis.where(private:true).page(params[:page]).per(15)
   end
 
   def new
@@ -32,7 +33,7 @@ class WikisController < ApplicationController
       redirect_to @wiki
     else
       flash[:alert] = 'Wiki not saved. Title is too short or missing. Please try again.'
-      redirect_to :new
+      render :new
     end
   end
 
@@ -49,7 +50,7 @@ class WikisController < ApplicationController
       redirect_to @wiki
     else
       flash[:alert] = "Wiki was unable to be updated pleace try again. "
-      redirect_to :update
+      render :edit
     end
   end
 

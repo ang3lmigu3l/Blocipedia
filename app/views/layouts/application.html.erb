@@ -12,17 +12,20 @@
   <nav class="nav nav-tabs ">
     <li id="top"><%= link_to "Blocipedia", root_path, id:'title' %></li>
     <li role="presentation" class="dropdown">
+      <%if user_premium_or_admin %>
       <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> Wikis<span class="caret"></span></a>
       <ul class="dropdown-menu">
-        <%if user_premium_or_admin %>
         <li role="presentation" ><%= link_to "New Wiki", new_wiki_path %> </li>
-        <li role="presentation" ><%= link_to "Private Wikis", private_wikis_path %></li>
+        <li role="presentation" ><%= link_to "My Private Wikis", private_wikis_path %></li>
         <li role="separator" class="divider"></li>
+          <li><%= link_to "All Wikis", wikis_path %> </li>
+        <% else %>
+        <li><%= link_to "Wikis", wikis_path %> </li>
         <% end %>
-        <li><%= link_to "All Wikis", wikis_path %> </li>
       </ul>
     </li>
-    <% if user_not_admin %> <li><%= link_to "Subscription", new_charge_path %></li>
+    <% if user_not_admin %>
+    <li><%= link_to "Subscription", new_charge_path %></li>
     <% end %>
     <li><%= link_to "About", about_path %> </li>
     <ul class="nav nav-tabs navbar-right">

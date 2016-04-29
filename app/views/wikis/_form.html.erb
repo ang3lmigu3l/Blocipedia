@@ -1,17 +1,28 @@
 <%= form_for [wiki] do |f| %>
-  <div class="form-group">
-    <%= f.label :title %>
-    <%= f.text_field :title , class: 'form-control', placeholder: "Wiki Title ", autofocus: true %>
-  </div>
-  <div class="form-group">
-    <%= f.label :body  %>
-    <%= f.text_area :body ,rows: 15, class: 'form-control', placeholder: "What is this Wiki About? " %>
-  </div>
-  <% if current_user.admin? || current_user.premium? %>
-  <div class="form-group">
-    <%= f.label :private %>
-    <%= f.check_box  :private%>
-  </div>
+  <% if wiki.errors.any? %>
+    <div class="alert alert-info">
+      <h4> <%= pluralize(wiki.errors.count, "error") %>. </h4>
+        <ul>
+          <% wiki.errors.full_messages.each do |msg| %>
+          <li><small><%= msg %></small></li>
+          <% end %>
+        </ul>
+    </div>
   <% end %>
+    <%= form_group_tag(wiki.errors[:title]) do %>
+        <%= f.label :title %>
+        <%= f.text_field :title , class: 'form-control', placeholder: "Wiki Title ", autofocus: true %>
+    <% end %>
+    <%= form_group_tag(wiki.errors[:body]) do %>
+        <%= f.label :body  %>
+        <%= f.text_area :body ,rows: 15, class: 'form-control', placeholder: "What is this Wiki About? " %>
+    <% end %>
+
+    <% if current_user.admin? || current_user.premium? %>
+      <div class="form-group">
+        <%= f.label :private %>
+        <%= f.check_box  :private%>
+      </div>
+    <% end %>
   <%= f.submit "Submit Item", class: 'btn btn-primary pull-right' %>
 <% end %>
