@@ -1,4 +1,4 @@
-#blocipedia
+#Blocipedia
 
 An app that lets users view and create wikis.
 
