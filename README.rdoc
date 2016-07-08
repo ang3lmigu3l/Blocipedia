@@ -2,7 +2,7 @@
 
 An app that lets users view and create wikis.
 
-# Features
+## Features
 
 + Users can create a standard account in order to create, edit, and collaborate on public wikis using Markdown syntax. Anyone can view public wikis.
 + Users can pay to upgrade their account to Premium in order to view and create private wikis.
