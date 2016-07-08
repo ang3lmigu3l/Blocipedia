@@ -1,4 +1,3 @@
-
 == blocipedia
 
 An app that lets users view and create wikis.
