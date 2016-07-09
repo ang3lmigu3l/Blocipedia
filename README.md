@@ -1,3 +1,6 @@
+<p align="center"><img src="http://miguelquintana.xyz/img/blocipedia.png"  align="center" width= "500" ></p>
+
+
 #Blocipedia
 
 An app that lets users view and create wikis.
